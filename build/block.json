@@ -1,0 +1,106 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "create-block/forged-contact-form",
+	"version": "0.1.0",
+	"title": "Forged Contact Form",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Example static block scaffolded with Create Block tool.",
+	"supports": {
+		"align": true,
+		"html": false
+	},
+	"textdomain": "forged-contact-form",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"attributes": {
+		"formId": {
+			"type": "number"
+		},
+		"nameLabel": {
+			"type": "string"
+		},
+		"emailLabel": {
+			"type": "string"
+		},
+		"messageLabel": {
+			"type": "string"
+		},
+		"messageRows": {
+			"type": "number",
+			"default": 5
+		},
+		"buttonText": {
+			"type": "string",
+			"default": "Send Message"
+		},
+		"buttonBackgroundColor" : {
+			"type": "string"
+		},
+		"buttonTextColor": {
+			"type": "string"
+		},
+		"nameLabelColor": {
+			"type": "string",
+			"default": "#ddddff"
+		},
+		"emailLabelColor": {
+			"type": "string",
+			"default": "#ddddff"
+		},
+		"messageLabelColor": {
+			"type": "string",
+			"default": "#ddddff"
+		},
+		"nameTextColor": {
+			"type": "string",
+			"default": "#dfdfff"
+		},
+		"emailTextColor": {
+			"type": "string",
+			"default": "#dfdfff"
+		},
+		"messageTextColor": {
+			"type": "string",
+			"default": "#dfdfff"
+		},
+		"nameBackground": {
+			"type": "string",
+			"default": "#2e2e2f"
+		},
+		"emailBackground": {
+			"type": "string",
+			"default": "#2e2e2f"
+		},
+		"messageBackground": {
+			"type": "string",
+			"default": "#2e2e2f"
+		},
+		"formBackgroundColor": {
+			"type": "string",
+			"default": "none"
+		},
+		"formMaxWidth": {
+			"type": "string",
+			"default": "100%"
+		},
+		"formMaxWidthUnit": {
+			"type": "string",
+			"default": "%"
+		},
+		"formMinWidth": {
+			"type": "string",
+			"default": "100%"
+		},
+		"formMinWidthUnit": {
+			"type": "string",
+			"default": "%"
+		},
+		"buttonWidth": {
+			"type": "string",
+			"default": "100%"
+		}
+	}
+}

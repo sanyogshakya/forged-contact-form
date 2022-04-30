@@ -1,0 +1,38 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.is-style-nimbus-nine .forged-contact-form__group{
+    position: relative;
+}
+.is-style-nimbus-nine .forged-contact-form__group input[type='text'],
+.is-style-nimbus-nine .forged-contact-form__group textarea{
+    margin: 0.8rem 0;
+}
+.is-style-nimbus-nine .forged-contact-form__group input[type='submit']{
+    margin-top: 0.4rem;
+}
+.is-style-nimbus-nine .forged-contact-form__group-label.name-label,
+.is-style-nimbus-nine .forged-contact-form__group-label.email-label{
+    position: absolute;
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.3s ease-in-out;
+}
+.is-style-nimbus-nine .forged-contact-form__group-label.message-label{
+    position: absolute;
+    left: 0.5rem;
+    top: 1.3rem;
+    transition: 0.3s ease-in-out;
+}
+.is-style-nimbus-nine .forged-contact-form__group.in-focus .forged-contact-form__group-label.name-label,
+.is-style-nimbus-nine .forged-contact-form__group.in-focus .forged-contact-form__group-label.email-label,
+.is-style-nimbus-nine .forged-contact-form__group.in-focus .forged-contact-form__group-label.message-label{
+	top: -0.1rem;
+	transform: scale(0.8);
+}
+.is-style-nimbus-nine .forged-contact-form__group-label{
+    pointer-events: none;
+}
