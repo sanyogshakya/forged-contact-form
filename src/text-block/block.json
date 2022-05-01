@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "create-block/forged-contact-form-text-block",
+	"version": "0.1.0",
+	"title": "Forged Contact Form text block",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Text block for Forged Contact Form block",
+	"supports": {
+		"align": true,
+		"html": false
+	},
+	"textdomain": "forged-contact-form-text-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"parent": ["create-block/forged-contact-form"]
+}

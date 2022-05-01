@@ -30,7 +30,8 @@ if(!class_exists('forged_contact_form_block_class')){
 			add_action( 'wp_enqueue_scripts', array($this, 'create_block_forged_contact_form_block_front_enqueue') );
 		}
 		function create_block_forged_contact_form_block_block_init() {
-			register_block_type( __DIR__ . '/build' );
+			register_block_type( __DIR__ . '/build/form-block' );
+			register_block_type( __DIR__ . '/build/text-block' );
 		}
 		
 		function create_block_forged_contact_form_block_styles_init() {
