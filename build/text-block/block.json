@@ -15,5 +15,23 @@
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
-	"parent": ["create-block/forged-contact-form"]
+	"parent": ["create-block/forged-contact-form"],
+	"attributes": {
+		"fieldLabel": {
+			"type": "string",
+			"default": "Field Label"
+		},
+		"textFieldLabelColor": {
+			"type": "string",
+			"default": "#ddddff"
+		},
+		"textFieldBGColor": {
+			"type": "string",
+			"default": "#2e2e2f"
+		},
+		"textFieldColor": {
+			"type": "string",
+			"default": "#dfdfff"
+		}
+	}
 }

@@ -44,8 +44,79 @@ import "./editor.scss";
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit() {
+export default function Edit({ attributes, setAttributes }) {
 	const blockProps = useBlockProps();
 
-	return <div {...blockProps}>Hello from text block...</div>;
+	const { fieldLabel, textFieldLabelColor, textFieldBGColor, textFieldColor } =
+		attributes;
+
+	const onChangeTextFieldLabel = (newLabel) => {
+		setAttributes({
+			fieldLabel: newLabel === undefined ? "Text Field Label" : newLabel,
+		});
+	};
+
+	const onChangeTextFieldLabelColor = (newTextFieldLabelColor) => {
+		setAttributes({ textFieldLabelColor: newTextFieldLabelColor });
+	};
+
+	const onChangeTextFieldColor = (newTextFieldColor) => {
+		setAttributes({ textFieldColor: newTextFieldColor });
+	};
+
+	const onChangeTextFieldBGColor = (newTextFieldBGColor) => {
+		setAttributes({ textFieldBGColor: newTextFieldBGColor });
+	};
+
+	const SSCB_CF = "forged-contact-form";
+	const SSCB_CF_group = `${SSCB_CF}__group`;
+	const SSCB_CF_label = `${SSCB_CF_group}-label`;
+	const SSCB_CF_input = `${SSCB_CF_group}-input`;
+
+	return (
+		<>
+			<InspectorControls>
+				<PanelColorSettings
+					title={__("Color Settings", "my-contact-form-block")}
+					initialOpen={false}
+					colorSettings={[
+						{
+							value: textFieldLabelColor,
+							onChange: onChangeTextFieldLabelColor,
+							label: __("Name label color", "my-contact-form-block"),
+						},
+						{
+							value: textFieldColor,
+							onChange: onChangeTextFieldColor,
+							label: __("Text Field color", "my-contact-form-block"),
+						},
+						{
+							value: textFieldBGColor,
+							onChange: onChangeTextFieldBGColor,
+							label: __("Text Field Background Color", "my-contact-form-block"),
+						},
+					]}
+				/>
+			</InspectorControls>
+			<div {...blockProps} className={SSCB_CF_group}>
+				<RichText
+					tagName="label"
+					className={SSCB_CF_label + " name-label"}
+					value={fieldLabel}
+					forHtml="name"
+					allowedFormats={["core/bold", "core/italic"]}
+					onChange={onChangeTextFieldLabel}
+					placeholder={__("Name Label", "custom-contact-form")}
+					style={{ color: textFieldLabelColor }}
+				/>
+				<input
+					className={SSCB_CF_input}
+					type="text"
+					id="name"
+					name="name"
+					style={{ backgroundColor: textFieldBGColor, color: textFieldColor }}
+				/>
+			</div>
+		</>
+	);
 }
