@@ -30,7 +30,16 @@ if(!class_exists('forged_contact_form_block_class')){
 			add_action( 'wp_enqueue_scripts', array($this, 'create_block_forged_contact_form_block_front_enqueue') );
 		}
 		function create_block_forged_contact_form_block_block_init() {
-			register_block_type( __DIR__ . '/build' );
+			register_block_type( __DIR__ . '/build', array(
+				'api_version' => 2,
+				'render_callback' => array($this, 'forged_contact_form_dynamic_render_callback')
+			) );
+		}
+
+		function forged_contact_form_dynamic_render_callback( $block_attributes, $content ) {
+			return sprintf(
+				"We will Build the form from here"
+			);
 		}
 		
 		function create_block_forged_contact_form_block_styles_init() {

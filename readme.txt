@@ -1,6 +1,6 @@
 === Forged Contact Form ===
-Contributors:      The WordPress Contributors
-Tags:              block
+Contributors:      Sanyog Shakya
+Tags:              block, contact-form, styles
 Tested up to:      5.9
 Stable tag:        0.1.0
 License:           GPL-2.0-or-later
