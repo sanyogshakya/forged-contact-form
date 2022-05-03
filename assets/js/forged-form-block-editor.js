@@ -1,7 +1,5 @@
 jQuery(document).ready(function($){
-    console.log('loaded-editor');
     $('body').on('focus', '.forged-contact-form__group-input', function(){
-        console.log('focus');
         $(this).closest('.forged-contact-form__group').addClass('in-focus');
     });
     $('body').on('focus', '.forged-contact-form__group-textarea', function(){

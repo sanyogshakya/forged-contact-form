@@ -17,7 +17,7 @@
 	"style": "file:./style-index.css",
 	"attributes": {
 		"formId": {
-			"type": "number"
+			"type": "string"
 		},
 		"nameLabel": {
 			"type": "string"

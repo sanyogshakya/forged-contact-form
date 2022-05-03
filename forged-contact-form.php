@@ -28,18 +28,19 @@ if(!class_exists('forged_contact_form_block_class')){
 			add_action( 'init', array($this, 'create_block_forged_contact_form_block_styles_init') );
 			add_action( 'enqueue_block_editor_assets', array($this, 'create_block_forged_contact_form_block_enqueue') );
 			add_action( 'wp_enqueue_scripts', array($this, 'create_block_forged_contact_form_block_front_enqueue') );
-		}
-		function create_block_forged_contact_form_block_block_init() {
-			register_block_type( __DIR__ . '/build', array(
-				'api_version' => 2,
-				'render_callback' => array($this, 'forged_contact_form_dynamic_render_callback')
-			) );
+			add_action( 'wp_ajax_submit_forged_contact_form', array($this, 'submit_forged_contact_form') );
 		}
 
-		function forged_contact_form_dynamic_render_callback( $block_attributes, $content ) {
-			return sprintf(
-				"We will Build the form from here"
-			);
+		function submit_forged_contact_form() {
+			$formData = $_POST['formData'];
+			$formData = json_encode($formData);
+			wp_send_json_success( $formData, 200, 0 );
+		}
+
+		function create_block_forged_contact_form_block_block_init() {
+			register_block_type( __DIR__ . '/build', array(
+				'api_version' => 2
+			) );
 		}
 		
 		function create_block_forged_contact_form_block_styles_init() {
@@ -56,18 +57,30 @@ if(!class_exists('forged_contact_form_block_class')){
 		
 		function create_block_forged_contact_form_block_enqueue() {
 			wp_enqueue_script(
-				'contact-form-block-editor-script',
+				'forged-form-block-editor-script',
 				plugins_url( 'assets/js/forged-form-block-editor.js', __FILE__ ),
 				array('jquery')
 			);
 		}
 		
 		function create_block_forged_contact_form_block_front_enqueue() {
-			wp_enqueue_script(
-				'contact-form-block-script',
+			wp_register_script(
+				'forged-form-block-script',
 				plugins_url( 'assets/js/forged-form-block.js', __FILE__ ),
 				array('jquery')
 			);
+
+			wp_localize_script( "forged-form-block-script", "forgedFormFrontendObj", array(
+				"ajaxurl" => admin_url( "admin-ajax.php" ),
+				"nonce" => wp_create_nonce( "forged-contact-form_submit" ),
+			) );
+			wp_enqueue_script('forged-form-block-script');
+		}
+
+		function print_array($arr) {
+			echo "<pre>";
+			print_r($arr);
+			echo "</pre>";
 		}
 	
 	} // class close
