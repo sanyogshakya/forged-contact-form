@@ -32,9 +32,42 @@ if(!class_exists('forged_contact_form_block_class')){
 		}
 
 		function submit_forged_contact_form() {
-			$formData = $_POST['formData'];
-			$formData = json_encode($formData);
-			wp_send_json_success( $formData, 200, 0 );
+			if( isset( $_POST['nonce'] ) && wp_verify_nonce( $_POST['nonce'] , 'forged-contact-form_submit' ) ){
+				$subject = 'Mail recieved from your website.';
+				$to = 'shakyasanyog01@gmail.com';
+				$headers = array('From: '.get_bloginfo('name').' <admin@sanyogshakya.com.np>', 'Content-Type: text/html; charset=UTF-8');
+				$message = '<h3>You have recieved a message from a visitor.</h3>
+							<p>Name: '.sanitize_text_field($_POST['name']) . '<br>
+							Email: '.sanitize_email($_POST['email']). '<br>
+							Message: '.sanitize_textarea_field($_POST['message']) .'</p><br>
+							<a href=\'http://sanyogshakya.com.np\'>http://sanyogshakya.com.np</a>';
+				if(wp_mail( $to, $subject, $message, $headers )){
+					wp_send_json_success( 'Your message has been recieved. I will get to you shortly.', 200, 0 );
+				} else {
+					wp_send_json_error( 'There was an error sennding the message. Please use the alternatives below to contact me.', 500, 0 );
+				}
+			} else {
+				wp_send_json_error( 'The submission source could not be verified.', 400, 0 );
+			}
+		}
+
+		function send_email_from_forged_contact_form($data){
+			$data_arr = array();
+			parse_str($data, $data_arr);
+			$subject = 'Mail recieved from your website. From: '. $data_arr['email'];
+			$to = 'shakyasanyog01@gmail.com';
+			$headers = array('From: admin@sanyogshakya.com.np', 'Content-Type: text/html; charset=UTF-8');
+			$message = '<h3>You have recieved a message from a visitor.<h3><br><br>
+						Name: '.$data_arr['name'] . '<br>
+						Email: '.$data_arr['email']. '<br>
+						Message: '.($data_arr['message']) .'<br><br>
+						<a href=\'http://sanyogshakya.com.np\'>http://sanyogshakya.com.np</a>';
+			if(wp_mail( $to, $subject, $message, $headers )){
+				wp_send_json_success( 'Your message has bbeen recieved. I will get to you shortly.', 200, 0 );
+			} else {
+				wp_send_json_error( 'There was an error sennding the message. Please use the alternatives below to contact me.', 500, 0 );
+			}
+			
 		}
 
 		function create_block_forged_contact_form_block_block_init() {
@@ -75,6 +108,7 @@ if(!class_exists('forged_contact_form_block_class')){
 				"nonce" => wp_create_nonce( "forged-contact-form_submit" ),
 			) );
 			wp_enqueue_script('forged-form-block-script');
+			wp_enqueue_script('forged-draw-svg', plugins_url( 'assets/js/jquery.drawsvg.js', __FILE__ ), array('jquery'));
 		}
 
 		function print_array($arr) {

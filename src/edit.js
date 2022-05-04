@@ -82,7 +82,7 @@ export default function Edit({ attributes, setAttributes }) {
 	};
 
 	if (formId === undefined || formId === "") {
-		const newFormID = uniqid();
+		const newFormID = 'forged-contact-form__' + uniqid();
 		setAttributes({ formId: newFormID });
 	}
 

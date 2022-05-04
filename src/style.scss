@@ -49,3 +49,25 @@
 	.forged-contact-form__group-label {
 	pointer-events: auto;
 }
+.forged-contact-form__group-button.submit-in-progress {
+	width: 140px !important;
+    height: 140px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 15px solid forestgreen;
+	opacity: 0;
+	visibility: hidden;
+	transition: 1s ease;
+}
+.forged-contact-form__group-button {
+	position: relative;
+}
+#forged-checkmark-svg {
+	position: absolute;
+    left: 50%;
+    top: 4.6rem;
+    transform: translate(-50%, -50%);
+}

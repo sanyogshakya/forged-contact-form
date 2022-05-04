@@ -39,22 +39,27 @@ jQuery(document).ready(function($){
         }
         console.log($(this > '.forged-contact-form__group-button'));
         if( errorFlag === 0 ) {
-            var formData = $(this).serialize();
+            formId = $(this).attr('id');
+            var forgedForm = document.getElementById(formId);
+            var formData = new FormData(forgedForm);
+            var checkmark = $(this).closest('#forged-checkmark-svg').drawsvg();
+            formData.append('action', 'submit_forged_contact_form');
+            formData.append('nonce', forgedFormFrontendObj.nonce);
             $.ajax({
                 type: 'POST',
                 url : forgedFormFrontendObj.ajaxurl,
-                data: {
-                    formData: formData,
-                    nonce: forgedFormFrontendObj.nonce,
-                    action: 'submit_forged_contact_form'
-                },
+                data: formData,
+                processData: false,
+                contentType: false,
                 beforeSend: function(){
-                    $('.forged-contact-form__group-button').hide();
+                    $('#'+formId + ':submit').attr('disabled', 'disabled');
+                    $('.forged-contact-form__group-button').prop('disabled', true).addClass('submit-in-progress');
                 }
             })
             .done(function( response ) {
                 console.log(response);
-                $('.forged-contact-form__group-button').show();
+                // $('.forged-contact-form__group-button').show();
+                checkmark.drawsvg('animate');
             })
             .fail(function(response){
                 console.log(response);
