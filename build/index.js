@@ -648,7 +648,9 @@ function save(_ref) {
       color: messageTextColor
     },
     required: true
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: SSCB_CF_group + ' forged-contact-form__button-group'
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
     type: "submit",
     className: SSCB_CF_button + " wp-block-button__link",
     style: {
@@ -656,21 +658,24 @@ function save(_ref) {
       color: buttonTextColor,
       width: buttonWidth
     }
-  }, buttonText, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("svg", {
-    version: "1.1",
+  }, buttonText))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "forged-contact-form__submit-overlay"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("svg", {
     id: "forged-checkmark-svg",
-    xmlns: "http://www.w3.org/2000/svg",
-    xmlnsXlink: "http://www.w3.org/1999/xlink",
-    x: "0px",
-    y: "0px",
-    viewBox: "0 0 512 512",
-    xmlSpace: "preserve",
-    width: "154px"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("g", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("path", {
-    d: "M474.045,173.813c-4.201,1.371-6.494,5.888-5.123,10.088c7.571,23.199,11.411,47.457,11.411,72.1\r c0,62.014-24.149,120.315-68,164.166s-102.153,68-164.167,68s-120.316-24.149-164.167-68S16,318.014,16,256\r S40.149,135.684,84,91.833s102.153-68,164.167-68c32.889,0,64.668,6.734,94.455,20.017c28.781,12.834,54.287,31.108,75.81,54.315\r c3.004,3.239,8.066,3.431,11.306,0.425c3.24-3.004,3.43-8.065,0.426-11.306c-23-24.799-50.26-44.328-81.024-58.047\r C317.287,15.035,283.316,7.833,248.167,7.833c-66.288,0-128.608,25.813-175.48,72.687C25.814,127.392,0,189.712,0,256\r c0,66.287,25.814,128.607,72.687,175.479c46.872,46.873,109.192,72.687,175.48,72.687s128.608-25.813,175.48-72.687\r c46.873-46.872,72.687-109.192,72.687-175.479c0-26.332-4.105-52.26-12.201-77.064\r C482.762,174.736,478.245,172.445,474.045,173.813z"
+    viewBox: "0 0 500 500",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("ellipse", {
+    style: "paint-order: stroke; stroke: rgb(0, 255, 0); fill: rgba(216, 216, 216, 0); stroke-linecap: round; stroke-width: 45px;",
+    cx: "250",
+    cy: "250",
+    rx: "225.597",
+    ry: "225.597",
+    bxOrigin: "0.499352 0.499352"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("path", {
-    d: "M504.969,83.262c-4.532-4.538-10.563-7.037-16.98-7.037s-12.448,2.499-16.978,7.034l-7.161,7.161\r c-3.124,3.124-3.124,8.189,0,11.313c3.124,3.123,8.19,3.124,11.314-0.001l7.164-7.164c1.51-1.512,3.52-2.344,5.66-2.344\r s4.15,0.832,5.664,2.348c1.514,1.514,2.348,3.524,2.348,5.663s-0.834,4.149-2.348,5.663L217.802,381.75\r c-1.51,1.512-3.52,2.344-5.66,2.344s-4.15-0.832-5.664-2.348L98.747,274.015c-1.514-1.514-2.348-3.524-2.348-5.663\r c0-2.138,0.834-4.149,2.351-5.667c1.51-1.512,3.52-2.344,5.66-2.344s4.15,0.832,5.664,2.348l96.411,96.411\r c1.5,1.5,3.535,2.343,5.657,2.343s4.157-0.843,5.657-2.343l234.849-234.849c3.125-3.125,3.125-8.189,0-11.314\r c-3.124-3.123-8.189-3.123-11.313,0L212.142,342.129l-90.75-90.751c-4.533-4.538-10.563-7.037-16.98-7.037\r s-12.448,2.499-16.978,7.034c-4.536,4.536-7.034,10.565-7.034,16.977c0,6.412,2.498,12.441,7.034,16.978l107.728,107.728\r c4.532,4.538,10.563,7.037,16.98,7.037c6.417,0,12.448-2.499,16.977-7.033l275.847-275.848c4.536-4.536,7.034-10.565,7.034-16.978\r S509.502,87.794,504.969,83.262z"
-  }))))));
+    style: "stroke: rgb(0, 255, 0); paint-order: stroke; fill: rgba(216, 216, 216, 0); stroke-linecap: square; stroke-width: 45px; stroke-linejoin: round;",
+    d: "M 144 256.824 L 218.686 331.496 L 218.686 332.151 L 351 200",
+    bxOrigin: "0.213609 0.499034"
+  }))));
 }
 
 /***/ }),

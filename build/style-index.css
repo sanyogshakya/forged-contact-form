@@ -51,29 +51,142 @@
   pointer-events: auto;
 }
 
-.forged-contact-form__group-button.submit-in-progress {
-  width: 140px !important;
-  height: 140px;
+.wp-block-create-block-forged-contact-form {
+  position: relative;
+}
+
+.forged-contact-form__submit-overlay {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  visibility: hidden;
+  transform: translate(-50%, -50%);
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+  transition: 1s ease-in-out;
+}
+
+.submit-in-progress .forged-contact-form__submit-overlay,
+.submit-complete .forged-contact-form__submit-overlay {
+  visibility: visible;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+}
+
+.forged-contact-form__submit-overlay::before,
+.forged-contact-form__submit-overlay::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background-color: transparent;
+  outline: 5px solid forestgreen;
+  width: 115px;
+  height: 115px;
+  left: 50%;
+  top: 50%;
   margin-left: auto;
   margin-right: auto;
   display: block;
-  background-color: transparent;
-  border-radius: 50%;
-  border: 15px solid forestgreen;
-  opacity: 0;
-  visibility: hidden;
-  transition: 1s ease;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 1s cubic-bezier(0.55, -0.18, 0.3, 1.87);
 }
 
-.forged-contact-form__group-button {
-  position: relative;
+.forged-contact-form__submit-overlay::after {
+  top: 50%;
+  width: 60px;
+  height: 60px;
+  outline: 2px solid forestgreen;
+}
+
+.submit-in-progress .forged-contact-form__submit-overlay::before {
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-animation: pulse 1.5s linear infinite;
+          animation: pulse 1.5s linear infinite;
+}
+
+.submit-in-progress .forged-contact-form__submit-overlay::after {
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-animation: pulsex2 1.5s linear infinite;
+          animation: pulsex2 1.5s linear infinite;
+}
+
+.submit-complete .forged-contact-form__button-group::before,
+.submit-complete .forged-contact-form__submit-overlay::after {
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
 }
 
 #forged-checkmark-svg {
   position: absolute;
   left: 50%;
-  top: 4.6rem;
+  top: 52.5%;
   transform: translate(-50%, -50%);
+  visibility: hidden;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin-left: 2.4px;
+  margin-top: -3px;
+  transition: 1s cubic-bezier(0.55, -0.18, 0.3, 1.87);
+}
+
+.submit-complete #forged-checkmark-svg {
+  visibility: visible;
+  opacity: 1;
+  width: 120px;
+  height: 120px;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.4);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.4);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.4);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.4);
+  }
+}
+@-webkit-keyframes pulsex2 {
+  0% {
+    transform: translate(-50%, -50%) scale(0.4);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.8);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+}
+@keyframes pulsex2 {
+  0% {
+    transform: translate(-50%, -50%) scale(0.4);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.8);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0);
+  }
 }
 
 /*# sourceMappingURL=style-index.css.map*/

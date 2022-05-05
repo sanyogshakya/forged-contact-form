@@ -1,4 +1,5 @@
 jQuery(document).ready(function($){
+    "use strict";
     $('body').on('focus', '.forged-contact-form__group-input', function(){
         $(this).closest('.forged-contact-form__group').addClass('in-focus');
     });
@@ -39,10 +40,13 @@ jQuery(document).ready(function($){
         }
         console.log($(this > '.forged-contact-form__group-button'));
         if( errorFlag === 0 ) {
-            formId = $(this).attr('id');
+            var formId = $(this).attr('id');
+            var checkmark = $('body #forged-checkmark-svg').drawsvg({
+                stagger: 2000, // Break is set to 2 seconds
+                duration: 1000
+            });
             var forgedForm = document.getElementById(formId);
             var formData = new FormData(forgedForm);
-            var checkmark = $(this).closest('#forged-checkmark-svg').drawsvg();
             formData.append('action', 'submit_forged_contact_form');
             formData.append('nonce', forgedFormFrontendObj.nonce);
             $.ajax({
@@ -53,12 +57,15 @@ jQuery(document).ready(function($){
                 contentType: false,
                 beforeSend: function(){
                     $('#'+formId + ':submit').attr('disabled', 'disabled');
-                    $('.forged-contact-form__group-button').prop('disabled', true).addClass('submit-in-progress');
+                    $('.forged-contact-form__group-button').prop('disabled', true);
+                    $('#'+formId).parent().addClass('submit-in-progress');
                 }
             })
             .done(function( response ) {
-                console.log(response);
                 // $('.forged-contact-form__group-button').show();
+                console.log(formId);
+                $('#'+formId).parent().removeClass('submit-in-progress');
+                $('#'+formId).parent().addClass('submit-complete');
                 checkmark.drawsvg('animate');
             })
             .fail(function(response){
